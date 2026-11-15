@@ -1,13 +1,18 @@
 import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
+
 import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
 
 import TarjetaUsuario from './TarjetaUsuario'
+import ListaApi from './listaApi'
+import ListaUsuarios from './ListaUsuarios'
+import Perfil from './Perfil'
 
 
-function App() {
+function Inicio() {
 
   const [usuarios, setUsuarios] = useState([
     { id: 1, nombre:"Hector", rol:"bobo", activo: true},
@@ -34,10 +39,22 @@ function App() {
           activo={usuario.activo}
         />
       ))}
-      
+      <ListaApi />
     </div>
   )
   
 }
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Inicio/>}/>
+      <Route path="/perfil/:id" element={<perfil />}></Route>
+    </Routes>
+  )
+}
+
+
+
 
 export default App;
